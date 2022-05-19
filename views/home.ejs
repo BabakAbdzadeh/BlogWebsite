@@ -3,5 +3,15 @@
 
     <h1>Home</h1>
     <p><%= homeStartingContent %></p>
+    <br>
+
+
+
+<!-- Looping through posts array to printout the title and content -->
+<% posts.forEach(post =>{ %>
+      <h3><%=post.title%></h3>
+      <p><%=post.content%></p>
+<% }) %>
+
 
 <%- include('partials/footer'); %>
