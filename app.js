@@ -4,6 +4,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+var _ = require('lodash');
 
 
 // ------------------ lurespam Data -----------------
@@ -24,9 +25,6 @@ app.use(express.static("public"));
 // ------------------- Variables -------------------
 
 let posts =[];
-
-
-
 
 
 
@@ -53,12 +51,13 @@ app.get("/compose", (req, res)=>{
 
 // Dynamic URL
 app.get("/post/:postID", (req, res)=>{
-
-  posts.forEach(post=>{  
-    if(req.params.postID === post.title){
+const postID = _.lowerCase(req.params.postID);
+  posts.forEach(post=>{
+    const title = _.lowerCase(post.title);
+    if(postID === title){
       console.log("Matched");
     }else{
-      console.log("Well something is wrong!");
+      console.log("Something is wrong!");
     }
   });
 })
