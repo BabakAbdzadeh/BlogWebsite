@@ -51,6 +51,20 @@ app.get("/compose", (req, res)=>{
   res.render("compose");
 })
 
+// Dynamic URL
+app.get("/post/:postID", (req, res)=>{
+
+  posts.forEach(post=>{  
+    if(req.params.postID === post.title){
+      console.log("Matched");
+    }else{
+      console.log("Well something is wrong!");
+    }
+  });
+})
+
+
+
 app.post("/compose", (req, res)=>{
 
   const post = {
